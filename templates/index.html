@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi Manager</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px; /* Define a largura do container */
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .connected {
+            font-weight: 400;
+            font-size: 16px;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch; /* Alinha os elementos para preencher a largura do container */
+        }
+        .select, .password {
+            width: 100%; /* Define a largura dos campos para preencher o container */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 16px;
+        }
+
+        .form-input { /* Classe comum para os campos */
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 16px;
+            box-sizing: border-box; /* Garante que a borda e o preenchimento estão incluídos na largura e altura */
+        }
+
+        .button, .reload-button {
+            padding: 10px 20px;
+            margin-left: 100px;
+            margin-right: 100px;
+            border: none;
+            border-radius: 5px;
+            background-color: #827ffe;
+            color: #fff;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .message {
+            font-weight: 400;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Wi-Fi Manager</h1>
+            <p class="connected"><br>Network Connected: <span id="connected_ssid">{{ connected_ssid }}</span></p>
+        </header>
+        <form action="/connect" method="post" class="form">
+            <select name="ssid" class="form-input">
+                {% for ssid in ssids %}
+                    <option value="{{ ssid }}">{{ ssid }}</option>
+                {% endfor %}
+            </select>
+            <input type="password" name="password" class="form-input" placeholder="Password">
+            <button type="submit" class="button">Connect</button>
+        </form>
+        <p class="message"><br><br>If your wireless network is not listed above, click on the button below.</p>
+        <button onclick="location.reload();" class="reload-button">Update</button>
+    </div>
+</body>
+</html>
