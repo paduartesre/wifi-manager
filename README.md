@@ -25,3 +25,6 @@ Abra o navegador e acesse `http://localhost:8080` ou `http://192.168.1.18:8080` 
 ![Listando Redes](images/wifi-network.png)
 
 ![Rede Conectada](images/wifi-network-connected.png)
+<br><br><br><br>
+<b>Diagrama da Solução</b><br><br>
+![Diagrama da Solução](diagram-wifi-manager.png).
